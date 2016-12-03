@@ -129,24 +129,41 @@ def parseInfoTest( testData, maxSize ):
 	return [XData, YData]
 
 
-
-#def Logreg(xdata, ydata, wsize, sigma, lr):
-#	wvec = []
-#	bias = 0
-#	mistakeCounter = 0
-#	wvec = [0]+[0]*wsize
-#	
-#	looprange = len(wvec)
-#	for i in range(0,len(xdata)):
-#		xvec = [1] + xdata[i]
-#		ylabel = ydata[i]
-#		wtxSum = 0
-#		if(len(xvec) < len(wvec)):
-#			looprange = len(xvec)
-#		for j in range(0,looprange):
-#			wtxSum = wtxSum + wvec[j]*xvec[j]
-#		for j in range(0, looprange):
-			
-			
+def update( wvec, wtxSum, lr, sigma, xvec, ylabel):
+	wvecRet = copy.deepcopy(wvec)
+	x = ylabel*wtxSum
+	if(x < 0):
+		temp = 1/(1 + numpy.exp(x))
+	else:
+		temp = numpy.exp(-x)/(1 + numpy.exp(-x))
+	for j in range(0,len(wvec)):
+		regcomp = float(2*wvec[j])/pow(sigma,2)
+		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp)
+	return wvecRet
+	
 
 
+def LogReg(xdata, ydata, wsize, sigma, lr):
+	wvec = []
+	bias = 0
+	mistakeCounter = 0
+	wvec = [0]+[0]*wsize # adding index for the bias term
+	#for i in range(0,len(xdata)):
+	for i in range(0,7):
+		xvec = [1]+xdata[i]
+		ylabel = ydata[i]
+		wtxSum = numpy.dot(wvec,xvec)
+		print "wvec: ", wvec
+		#ed = numpy.exp(-ylabel*wtxSum)
+		print "wtx:", wtxSum, "yalebl:", ylabel
+		wvec = update(wvec, wtxSum, lr, sigma, xvec, ylabel)
+
+	##---- Make Predictions on the training data ----
+	for i in range(0,len(xdata)):
+		xvec = [1]+xdata[i]
+		wtxSum = numpy.dot(wvec,xvec)
+		if( wtxSum*ydata[i] < 0 ):
+			mistakeCounter = mistakeCounter + 1.0
+	print "Mistakes = ", mistakeCounter
+	return [wvec, mistakeCounter]
+	

@@ -43,9 +43,13 @@ def Run_Q1():
 	
 	[XData, YData, FSize] = func.parseInfo(trainFileHandle)
 	print "YData: ", len(YData), len(XData), FSize
+	if(test_index != -1):
+		[testXData, testYData] = func.parseInfoTest(testFileHandle, FSize)
+		print "From Test:", len(testXData), len(testYData)
 	sigma = 0.1
 	lr = 0.1
-	#[Bias, WVec, LearningMistake] = func.LogReg(XData, YData, maxVecLen, sigma, lr)
+	[WVec, LearningMistake] = func.LogReg(XData, YData, FSize, sigma, lr)
+	#TestMistakes = func.LogRegTest(
 
 
 
