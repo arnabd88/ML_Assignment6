@@ -129,7 +129,7 @@ def parseInfoTest( testData, maxSize ):
 	return [XData, YData]
 
 
-def update( wvec, wtxSum, lr, sigma, xvec, ylabel):
+def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
 	wvecRet = copy.deepcopy(wvec)
 	x = ylabel*wtxSum
 	if(x < 0):
@@ -137,33 +137,46 @@ def update( wvec, wtxSum, lr, sigma, xvec, ylabel):
 	else:
 		temp = numpy.exp(-x)/(1 + numpy.exp(-x))
 	for j in range(0,len(wvec)):
-		regcomp = float(2*wvec[j])/pow(sigma,2)
-		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp)
+		regcomp = float(2*wvec[j])/sigmaSq*(j!=0)
+		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp )
 	return wvecRet
 	
 
 
-def LogReg(xdata, ydata, wsize, sigma, lr):
+def LogReg(xdata, ydata, wsize, sigmaSq, lr, epochs):
 	wvec = []
 	bias = 0
 	mistakeCounter = 0
 	wvec = [0]+[0]*wsize # adding index for the bias term
-	#for i in range(0,len(xdata)):
-	for i in range(0,7):
-		xvec = [1]+xdata[i]
-		ylabel = ydata[i]
-		wtxSum = numpy.dot(wvec,xvec)
-		print "wvec: ", wvec
-		#ed = numpy.exp(-ylabel*wtxSum)
-		print "wtx:", wtxSum, "yalebl:", ylabel
-		wvec = update(wvec, wtxSum, lr, sigma, xvec, ylabel)
+	#wvec = numpy.random.normal(0, 0.1, len(wvec))
+	for ep in range(0,epochs):
+		#for i in range(0,len(xdata)):
+		for i in range(0,100):
+			xvec = [1]+xdata[i]
+			ylabel = ydata[i]
+			wtxSum = numpy.dot(wvec,xvec)
+			#ed = numpy.exp(-ylabel*wtxSum)
+			print "wtx:", wtxSum, "yalebl:", ylabel
+			wvec = update(wvec, wtxSum, lr, sigmaSq, xvec, ylabel)
 
-	##---- Make Predictions on the training data ----
+		##---- Make Predictions on the training data ----
+		mistakeCounter = 0.0
+		for i in range(0,len(xdata)):
+			xvec = [1]+xdata[i]
+			wtxSum = numpy.dot(wvec,xvec)
+			if( wtxSum*ydata[i] < 0 ):
+				mistakeCounter = mistakeCounter + 1.0
+		print "Mistakes = ", mistakeCounter
+	return [wvec, mistakeCounter]
+
+
+def LogRegTest( wvec , xdata, ydata ):
+	mistakeCounter = 0.0
 	for i in range(0,len(xdata)):
 		xvec = [1]+xdata[i]
-		wtxSum = numpy.dot(wvec,xvec)
-		if( wtxSum*ydata[i] < 0 ):
+		wtxSum = numpy.dot(wvec, xvec)
+		if( wtxSum*ydata[i] < 0):
 			mistakeCounter = mistakeCounter + 1.0
-	print "Mistakes = ", mistakeCounter
-	return [wvec, mistakeCounter]
+	print "Test Mistakes = ", mistakeCounter
+	return mistakeCounter
 	
