@@ -12,8 +12,9 @@ test_index = -1
 foldValue = 0
 
 
-LRateList = [0.0001,0.000001]
-SigmaSqList = [1,0.1,0.01,0.001]
+lr0 = 0.01
+SigmaSqList = [1000, 100,10,1,0.1,0.01,0.001]
+#SigmaSqList = [10,100]
 epochList = [4,5,6]
 
 trainFileHandle = []
@@ -59,7 +60,7 @@ def Run_kvalidate():
 	bestSigmaSq = 0
 	MaxAccuracy = 0
 	epochs = 1
-	lr = 0.00001
+	#lr = 0.00001
 
 	kfoldData = []
 	for sigmaSq in SigmaSqList:
@@ -67,12 +68,12 @@ def Run_kvalidate():
 		testAcc = 0
 		trainAcc = 0
 		for k in range(0,foldValue):
-			print "SigmaSq = ",sigmaSq, ", LR = ",lr
+			print "SigmaSq = ",sigmaSq, ", LR0 = ",lr0
 			KXTest = XData[k*blockSize:(k+1)*blockSize]
 			KYTest = YData[k*blockSize: (k+1)*blockSize]
 			KXData = [XData[i] for i in range(0,len(XData)) if(i<k*blockSize or i>=(k+1)*blockSize)]
 			KYData = [YData[i] for i in range(0,len(XData)) if(i<k*blockSize or i>=(k+1)*blockSize)]
-			[Wvec, trainMist] = func.LogReg(KXData, KYData, FSize, sigmaSq, lr, epochs)
+			[Wvec, trainMist,lr] = func.LogReg(KXData, KYData, FSize, sigmaSq, lr0, epochs)
 			testMist = func.LogRegTest(Wvec, KXTest, KYTest)
 			trainAcc = trainAcc + 100*float((len(KXData) - trainMist))/len(KXData)
 			testAcc  = testAcc + 100*float((len(KXTest) - testMist))/len(KXTest)
@@ -83,10 +84,10 @@ def Run_kvalidate():
 			MaxAccuracy = avgtestacc
 			bestSigma = sigmaSq
 
-	print "Best SigmaSq = ",bestSigmaSq, ", using lr = ", lr
+	print "Best SigmaSq = ",bestSigmaSq
 
 	##----------- Now learn on the entire data set --------------------##
-	[Wvec, trainMist] = func.LogReg(XData, YData, FSize, bestSigma, lr, 1)
+	[Wvec, trainMist, lr] = func.LogReg(XData, YData, FSize, bestSigma, lr0, 1)
 	print "Train Data size = ", len(XData)
 	FinalTrainAcc = 100*float(len(XData) - trainMist)/len(XData)
 	print "Final Training Accuracy = ", FinalTrainAcc," %"

@@ -138,25 +138,29 @@ def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
 		temp = numpy.exp(-x)/(1 + numpy.exp(-x))
 	for j in range(0,len(wvec)):
 		regcomp = float(2*wvec[j])/sigmaSq*(j!=0)
-		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp )
+		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp )
 	return wvecRet
 	
 
 
-def LogReg(xdata, ydata, wsize, sigmaSq, lr, epochs):
+def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs):
 	wvec = []
 	bias = 0
 	mistakeCounter = 0
 	wvec = [0]+[0]*wsize # adding index for the bias term
 	#wvec = numpy.random.normal(0, 0.1, len(wvec))
+	t = 0
+	lr = 0
 	for ep in range(0,epochs):
-		#for i in range(0,len(xdata)):
-		for i in range(0,100):
+		for i in range(0,len(xdata)):
+		#for i in range(0,100):
 			xvec = [1]+xdata[i]
 			ylabel = ydata[i]
 			wtxSum = numpy.dot(wvec,xvec)
 			#ed = numpy.exp(-ylabel*wtxSum)
-			print "wtx:", wtxSum, "yalebl:", ylabel
+			#print "wtx:", wtxSum, "yalebl:", ylabel
+			lr = lr0/(1 + (lr0*t)/sigmaSq)
+			t = t+1
 			wvec = update(wvec, wtxSum, lr, sigmaSq, xvec, ylabel)
 
 		##---- Make Predictions on the training data ----
@@ -167,7 +171,7 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr, epochs):
 			if( wtxSum*ydata[i] < 0 ):
 				mistakeCounter = mistakeCounter + 1.0
 		print "Mistakes = ", mistakeCounter
-	return [wvec, mistakeCounter]
+	return [wvec, mistakeCounter, lr]
 
 
 def LogRegTest( wvec , xdata, ydata ):
