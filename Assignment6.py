@@ -12,8 +12,8 @@ test_index = -1
 foldValue = 0
 
 
-lr0 = 0.01
-SigmaSqList = [1000, 100,10,1,0.1,0.01,0.001]
+lr0 = 0.05
+SigmaSqList = [10000, 1000, 100,10,1,0.1,0.01,0.001]
 #SigmaSqList = [10,100]
 epochList = [4,5,6]
 
@@ -59,7 +59,7 @@ def Run_kvalidate():
 	[XData, YData, FSize] = func.parseInfo(trainFileHandle)
 	bestSigmaSq = 0
 	MaxAccuracy = 0
-	epochs = 1
+	epochs = 40
 	#lr = 0.00001
 
 	kfoldData = []
@@ -82,12 +82,16 @@ def Run_kvalidate():
 		kfoldData.append([sigmaSq, avgtrainacc, avgtestacc])
 		if(MaxAccuracy < avgtestacc):
 			MaxAccuracy = avgtestacc
-			bestSigma = sigmaSq
+			bestSigmaSq = sigmaSq
 
 	print "Best SigmaSq = ",bestSigmaSq
 
+	##----------- Cross Validation Report ------------------------
+	for i in kfoldData:
+		print "SigmaSq = ", i[0], ", TrainAcc = ",i[1], ", TestAcc = ",i[2]
+
 	##----------- Now learn on the entire data set --------------------##
-	[Wvec, trainMist, lr] = func.LogReg(XData, YData, FSize, bestSigma, lr0, 1)
+	[Wvec, trainMist, lr] = func.LogReg(XData, YData, FSize, bestSigmaSq, lr0, epochs)
 	print "Train Data size = ", len(XData)
 	FinalTrainAcc = 100*float(len(XData) - trainMist)/len(XData)
 	print "Final Training Accuracy = ", FinalTrainAcc," %"

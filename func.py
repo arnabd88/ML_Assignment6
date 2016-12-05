@@ -137,7 +137,7 @@ def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
 	else:
 		temp = numpy.exp(-x)/(1 + numpy.exp(-x))
 	for j in range(0,len(wvec)):
-		regcomp = float(2*wvec[j])/sigmaSq*(j!=0)
+		regcomp = (float(2*wvec[j])/sigmaSq)*(j!=0)
 		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp )
 	return wvecRet
 	
@@ -170,7 +170,7 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs):
 			wtxSum = numpy.dot(wvec,xvec)
 			if( wtxSum*ydata[i] < 0 ):
 				mistakeCounter = mistakeCounter + 1.0
-		print "Mistakes = ", mistakeCounter
+	#	print "Mistakes = ", mistakeCounter
 	return [wvec, mistakeCounter, lr]
 
 
@@ -181,6 +181,6 @@ def LogRegTest( wvec , xdata, ydata ):
 		wtxSum = numpy.dot(wvec, xvec)
 		if( wtxSum*ydata[i] < 0):
 			mistakeCounter = mistakeCounter + 1.0
-	print "Test Mistakes = ", mistakeCounter
+	#print "Test Mistakes = ", mistakeCounter
 	return mistakeCounter
 	
