@@ -266,5 +266,39 @@
 
 	Hence, our classifier is a linear classifier. \newline
 
+	\question{4}{Experiment}
+	Given minimization problem: $\min_{\mathbf{w}}\{ \sum_{i=1}^m \log(1 + \exp(-y_i\mathbf{w}^T\mathbf{x_i})) + \dfrac{1}{\sigma^2}\mathbf{w^Tw} \}$
+	\part{1} To find the derivative of the function: $g(\mathbf{w}) = \log(1 + \exp(-y_i\mathbf{w^Tx_i}))$. For an n-dimensional vector, its gradient will have derivative components with respect to each feature,$w_j$, that will be:
+	\[ \dfrac{\partial g(\mathbf{w})}{\partial w_j} = \dfrac{\exp(-y_i\mathbf{w^Tx_i})(-y_ix_{ij})}{1 + \exp(-y_i\mathbf{w^Tx_i})} = \dfrac{-y_ix_{ij}}{1 + \exp(y_i\mathbf{w^Tx_i})}\]
+	Thus, the overall gradient vector will be:
+	\[\nabla g(\mathbf{w}) = [\dfrac{\partial g}{\partial w_1},\dfrac{\partial g}{\partial w_2}, \dots, \dfrac{\partial g}{\partial w_n}] = \dfrac{-y_i\mathbf{x_i}}{1 + \exp(y_i\mathbf{w^Tx_i})}\]
+
+	\part{2} Gradient update is the innermost step of SGD where a single example is treated as the entire dataset to compute the gradient. The objective function for a single example $(\mathbf{x_i},y_i)$, will be:
+	\[ J(\mathbf{w}) = \log(1 + \exp(-y_i\mathbf{w^Tx_i})) + \dfrac{1}{\sigma^2}\mathbf{w^Tw} \]
+	The partial derivative with respect to weight component $w_j$ will be:
+	\[ \dfrac{\partial J(\mathbf{w})}{\partial w} = \dfrac{-y_ix_{ij}}{1 + \exp(y_i\mathbf{w^Tx_i})} + \dfrac{2}{\sigma^2}w_j \]
+	Thus the overall gradient will be:
+	\[\nabla J(\mathbf{w}) = [\dfrac{\partial J}{\partial w_1},\dfrac{\partial J}{\partial w_2}, \dots, \dfrac{\partial J}{\partial w_n}] = \dfrac{-y_i\mathbf{x_i}}{1 + \exp(y_i\mathbf{w^Tx_i})} + \dfrac{2}{\sigma^2}\mathbf{w}  \]
+	\begin{equation}
+	\nabla J(\mathbf{w}) = \dfrac{-y_i\mathbf{x_i}}{1 + \exp(y_i\mathbf{w^Tx_i})} + \dfrac{2}{\sigma^2}\mathbf{w} 
+		\label{eq:grad}
+	\end{equation}
+
+	\part{3} In Stochastic Gradient Descent(SGD), we make an update after seeing an example and evaluating its gradient, and we tend to update the weight vector, \textbf{w}, in the opposite direction of the gradient such that it moves closer towards the minima. Hence, the \textbf {update rule} is:
+	\[ \mathbf{w_{t+1}} = \mathbf{w_t} - r_t \nabla J(\mathbf{w}) \]
+	\[ \mathbf{w_{t+1}} = \mathbf{w_t} - r_t\{ \dfrac{-y_i\mathbf{x_i}}{1 + \exp(y_i\mathbf{w^Tx_i})} + \dfrac{2\mathbf{w_t}}{\sigma^2}\}\]
+	\[ \mathbf{w_{t+1}} = \mathbf{w_t}(1 - \dfrac{2r_t}{\sigma^2}) + \dfrac{r_t y_i}{1 + \exp(y_i\mathbf{w^Tx_i})}\mathbf{x_i} \]
+	where $r_t$, is the adaptive learning rate in the t'th step, and is derived from: $r_t = \dfrac{r_0}{1 + \dfrac{r_0t}{\sigma^2}}$. Replacing the gradient from $\eqref{eq:grad}$ , we get have the following \textbf {peusoCode} for stochastic gradient: \newline
+	\textbf{SGD(DataSet=D,Epochs=T)} \newline
+	\hspace*{0.5cm} Initialize $\mathbf{w_0 = 0}, t = 0$ \newline
+	\hspace*{0.5cm} For epoch in $1 \dots T$ \newline
+	\hspace*{1.0cm}    permute DataSet \textbf{D} \newline
+	\hspace*{1.0cm}    for each $<\mathbf{x_i},y_i>$ D: \newline
+	\hspace*{1.5cm}    	$r_t$ = $\dfrac{r_0}{1 + \dfrac{r_0t}{\sigma^2}}$ \newline
+	\hspace*{1.5cm}		$ \mathbf{w_{t+1}} = \mathbf{w_t}(1 - \dfrac{2r_t}{\sigma^2}) + \dfrac{r_t y_i}{1 + \exp(y_i\mathbf{w^Tx_i})}\mathbf{x_i} $ \newline
+	\hspace*{1.5cm}		t = t+1 \newline
+	\hspace*{0.5cm} return $\mathbf{w}$
+
+
 
 \end{document}
