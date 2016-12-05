@@ -123,35 +123,50 @@ def parseInfoTest( testData, maxSize ):
 			x_temp = [0]*maxSize
 			for i in lineList[1:]:
 				arg = i.split(':')
-				if(int(arg[0]) < maxSize):
-					x_temp[int(arg[0])] = int(arg[1])
+				if(int(arg[0]) <= maxSize):
+					x_temp[int(arg[0])-1] = int(arg[1])
 			XData.append(x_temp)
 	return [XData, YData]
 
 
+#def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
+#	wvecRet = copy.deepcopy(wvec)
+#	x = ylabel*wtxSum
+##	if(x < 0):
+#	temp = 1/(1 + math.exp(x))
+##	else:
+##		temp = math.exp(-x)/(1 + math.exp(-x))
+#	for j in range(0,len(wvec)):
+#		regcomp = (float(2*wvec[j])/sigmaSq)
+#		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp )
+#	return wvecRet
+
 def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
 	wvecRet = copy.deepcopy(wvec)
-	x = ylabel*wtxSum
-	if(x < 0):
-		temp = 1/(1 + numpy.exp(x))
-	else:
-		temp = numpy.exp(-x)/(1 + numpy.exp(-x))
-	for j in range(0,len(wvec)):
-		regcomp = (float(2*wvec[j])/sigmaSq)*(j!=0)
-		wvecRet[j] = wvec[j] - lr*( -float(ylabel*xvec[j])*temp + regcomp )
+	lrfactor = (1 - float(2*lr)/sigmaSq)
+
+	denom = (1 + math.exp(ylabel*wtxSum))
+	xvecRet = [ float(lr*ylabel*xvec[j])/denom for j in range(0,len(xvec))]
+
+	wvecRet = [wvec[j]*lrfactor + xvecRet[j] for j in range(0,len(wvec))]
+
 	return wvecRet
+
+
 	
 
 
-def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs):
+def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs, neglog):
 	wvec = []
 	bias = 0
 	mistakeCounter = 0
+	neglogdata = []
 	wvec = [0]+[0]*wsize # adding index for the bias term
 	#wvec = numpy.random.normal(0, 0.1, len(wvec))
 	t = 0
 	lr = 0
 	for ep in range(0,epochs):
+		[xdata,ydata] = permuteDataLabel(xdata,ydata)
 		for i in range(0,len(xdata)):
 		#for i in range(0,100):
 			xvec = [1]+xdata[i]
@@ -159,19 +174,31 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs):
 			wtxSum = numpy.dot(wvec,xvec)
 			#ed = numpy.exp(-ylabel*wtxSum)
 			#print "wtx:", wtxSum, "yalebl:", ylabel
-			lr = lr0/(1 + (lr0*t)/sigmaSq)
+			lr = lr0/(1 + (float(lr0*t)/sigmaSq))
 			t = t+1
-			wvec = update(wvec, wtxSum, lr, sigmaSq, xvec, ylabel)
+			wvec1 = update(wvec, wtxSum, lr, sigmaSq, xvec, ylabel)
+			wvec = wvec1
+		#	print lr
 
 		##---- Make Predictions on the training data ----
 		mistakeCounter = 0.0
+		sumLog = 0.0
 		for i in range(0,len(xdata)):
 			xvec = [1]+xdata[i]
 			wtxSum = numpy.dot(wvec,xvec)
+			#print wtxSum
 			if( wtxSum*ydata[i] < 0 ):
 				mistakeCounter = mistakeCounter + 1.0
-	#	print "Mistakes = ", mistakeCounter
-	return [wvec, mistakeCounter, lr]
+			##--- evluate the negative log likelihood ---
+			if(neglog==1):
+				sumLog = sumLog + (numpy.log(1 + math.exp(-ylabel*wtxSum)))
+		if(neglog==1):
+			neglogdata.append([ep,sumLog])
+				
+	if(neglog==0):
+		return [wvec, mistakeCounter, lr]
+	else:
+		return [wvec, mistakeCounter, lr, neglogdata]
 
 
 def LogRegTest( wvec , xdata, ydata ):
