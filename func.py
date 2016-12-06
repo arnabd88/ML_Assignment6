@@ -267,7 +267,7 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs, neglog):
 			sumLog = sumLog + numpy.dot(wvec,wvec)/sigmaSq
 		if(neglog==1):
 			neglogdata.append([ep,sumLog])
-			print "Epoch = ",ep,", NegLogLikeliHood = ",sumLog, "L2-Norm-Weight = ",numpy.linalg.norm(wvec)
+			print "Epoch = ",ep,", ObjectiveFunValue = ",sumLog, "L2-Norm-Weight = ",numpy.linalg.norm(wvec)
 		#print "============= End Epoch ===================="
 				
 	if(neglog==0):
