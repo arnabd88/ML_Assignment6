@@ -153,6 +153,9 @@ def update( wvec, wtxSum, lr, sigmaSq, xvec, ylabel):
 	return wvecRet
 
 
+def lossFunc(wvec, xvec, ylabel, sigmaSq):
+	wtxSum = numpy.dot(wvec,xvec)
+	return math.log(1 + math.exp(-ylabel*wtxSum)) + numpy.dot(wvec,wvec)/sigmaSq
 	
 
 
@@ -166,6 +169,7 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs, neglog):
 	t = 0
 	lr = 0
 	for ep in range(0,epochs):
+		#print "============= Start Epoch ===================="
 		[xdata,ydata] = permuteDataLabel(xdata,ydata)
 		for i in range(0,len(xdata)):
 		#for i in range(0,100):
@@ -176,8 +180,10 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs, neglog):
 			#print "wtx:", wtxSum, "yalebl:", ylabel
 			lr = lr0/(1 + (float(lr0*t)/sigmaSq))
 			t = t+1
+			#if(ylabel*wtxSum <= 0):
 			wvec1 = update(wvec, wtxSum, lr, sigmaSq, xvec, ylabel)
 			wvec = wvec1
+			#print lossFunc(wvec, xvec, ylabel, sigmaSq)
 		#	print lr
 
 		##---- Make Predictions on the training data ----
@@ -191,9 +197,11 @@ def LogReg(xdata, ydata, wsize, sigmaSq, lr0, epochs, neglog):
 				mistakeCounter = mistakeCounter + 1.0
 			##--- evluate the negative log likelihood ---
 			if(neglog==1):
-				sumLog = sumLog + (numpy.log(1 + math.exp(-ylabel*wtxSum)))
+				sumLog = sumLog + (math.log(1 + math.exp(-ylabel*wtxSum)))
 		if(neglog==1):
 			neglogdata.append([ep,sumLog])
+			print "Epoch = ",ep,", NegLogLikeliHood = ",sumLog
+		#print "============= End Epoch ===================="
 				
 	if(neglog==0):
 		return [wvec, mistakeCounter, lr]
