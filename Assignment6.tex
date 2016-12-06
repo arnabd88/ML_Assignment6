@@ -89,20 +89,20 @@
   \part{5a} If $A_1$ and $A_2$ are independent variables, show that: $E[A_1 + A_2] = E[A_1] + E[A_2]$ \newline
   \textbf{Proof:} Assuming $A_1$ and $A_2$ being independent discrete random variables, although the same holds for the continuous case.
   Then the expectation of $A_1$ is written as:
-  \[E[A_1] = \sum_{all a_1} a_1P(A_1 = a_1)\]
+  \[E[A_1] = \sum_{a_1} a_1P(A_1 = a_1)\]
   where $a_1$ represents the values that $A_1$ can take and $P(a_2)$ represents their probabilities. \newline
   Similarly,
-  \[E[A_2] = \sum_{all a_2} a_2P(A_2 = a_2) \]
+  \[E[A_2] = \sum_{a_2} a_2P(A_2 = a_2) \]
 
   Then, we can write:
-  \[E[A_1 + A_2] = \sum_{all a_1} \sum_{all a_2} (a_1 + a_2)P(A_1 = a_1, A_2 = a_2)\]
+  \[E[A_1 + A_2] = \sum_{a_1} \sum_{a_2} (a_1 + a_2)P(A_1 = a_1, A_2 = a_2)\]
   or,
-  \[E[A_1 + A_2] = \sum_{all a_1} \sum_{all a_2} a_1 P(A_1 = a_1, A_2 = a_2) + \sum_{all a_1} \sum_{all a_2} a_2 P(A_1 = a_1, A_2 = a_2)\]
+  \[E[A_1 + A_2] = \sum_{a_1} \sum_{a_2} a_1 P(A_1 = a_1, A_2 = a_2) + \sum_{a_1} \sum_{a_2} a_2 P(A_1 = a_1, A_2 = a_2)\]
   or,
-  \[E[A_1 + A_2] = \sum_{all a_1} a_1 \sum_{all a_2} P(A_1 = a_1, A_2 = a_2) + \sum_{all a_2} a_2 \sum_{all a_1} P(A_1 = a_1, A_2 = a_2)\]
+  \[E[A_1 + A_2] = \sum_{a_1} a_1 \sum_{a_2} P(A_1 = a_1, A_2 = a_2) + \sum_{a_2} a_2 \sum_{a_1} P(A_1 = a_1, A_2 = a_2)\]
 
-  Now, $\sum_{all a_2}P(A_1 = a_1, A_2 = a_2) = P(A_1 = a_1)$, since we are summing over all the possible $a_2$ values that $A_2$ can take. Similarly, $\sum_{all a_1}P(A_1 = a_1, A_2 = a_2) = P(A_2 = a_2)$. Plugging these back into the main equation, we get:
-  \[E[A_1 + A_2] = \sum_{all a_1} a_1 P(A_1 = a_1) + \sum_{all a_2} a_2 P(A_2 = a_2) = E[A_1] + E[A_2]\]
+  Now, $\sum_{a_2}P(A_1 = a_1, A_2 = a_2) = P(A_1 = a_1)$, since we are summing over all the possible $a_2$ values that $A_2$ can take. Similarly, $\sum_{a_1}P(A_1 = a_1, A_2 = a_2) = P(A_2 = a_2)$. Plugging these back into the main equation, we get:
+  \[E[A_1 + A_2] = \sum_{a_1} a_1 P(A_1 = a_1) + \sum_{a_2} a_2 P(A_2 = a_2) = E[A_1] + E[A_2]\]
 
 
   \part{5b} If $A_1$ and $A_2$ are independent variables, show that: $var[A_1 + A_2] = var[A_1] + var[A_2]$ \newline
@@ -122,12 +122,12 @@
   \[var[A_1 + A_2] = E[A_1^2] + E[A_2^2] +2E[A_1A_2] - (E[A_1])^2 - (E[A_2])^2 - 2E[A_1]E[A_2]\]
   \[var[A_1 + A_2] = (E[A_1^2] - (E[A_1])^2) + (E[A_2^2] - (E[A_2])^2) + 2E[A_1A_2] - 2E[A_1]E[A_2]\]
   \begin{equation}
-  var[A_1 + A_2] = var[A_1] + var[A_2] + 2E[A_1A_2] - 2E[A_1]E[A_2] = var[A_1] + var[A_2] + 2\sum_{all a_1}\sum{all a_2}a_1a_2P(A_1 = a_1,A_2 = a_2) - 2E[A_1]E[A_2]
+  var[A_1 + A_2] = var[A_1] + var[A_2] + 2E[A_1A_2] - 2E[A_1]E[A_2] = var[A_1] + var[A_2] + 2\sum_{a_1}\sum{a_2}a_1a_2P(A_1 = a_1,A_2 = a_2) - 2E[A_1]E[A_2]
 	  \label{eq:varsum}
   \end{equation}
 
   In $\eqref{eq:varsum}$, since the random variables, $A_1,A_2$ are independent, so we have, $P(A_1=a_1, A_2=a_2) = P(A_1=a_1)P(A_2=a_2)$. Plcaing this back in the equation and separating out the sum with their corresponding variables we get: 
-  \[var[A_1 + A_2] = var[A_1] + var[A_2] + 2\sum_{all a_1}a_1P(A_1=a_1)\sum{all a_2}a_2P(A_2 = a_2) - 2E[A_1]E[A_2]\]
+  \[var[A_1 + A_2] = var[A_1] + var[A_2] + 2\sum_{a_1}a_1P(A_1=a_1)\sum_{a_2}a_2P(A_2 = a_2) - 2E[A_1]E[A_2]\]
   \[var[A_1 + A_2] = var[A_1] + var[A_2] + 2E[A_1]E[A_2] - 2E[A_1]E[A_2]\]
   \[var[A_1 + A_2] = var[A_1] + var[A_2] \]
 
@@ -162,20 +162,15 @@
 	  +1 & 0.02 & 0.81 & +1 \\
   \end{longtable}
 
-  
- \part{1.c} To find the error in predictions, we need to find $P(y^\prime \neq y)$, Thus:
-  \[P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1) + P(y^\prime \neq y, x_1 = +1)\]
+
+  \part{1.c} To find the error in predictions, we need to find $P(y^\prime \neq y)$, Thus:
+  \[ P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1) + P(y^\prime \neq y, x_1 = +1)\]
   $P(y^\prime \neq y) = P(y^\prime = 1,x_1 = -1)P(y=-1,x_1=-1) + P(y^\prime =-1,x_1 = -1)P(y=+1,x_1=-1)$ \newline
 	$ + P(y^\prime = +1, x_1 = +1)P(y=-1, x_1 = +1) + P(y^\prime = -1, x_1 = +1)P(y=+1, x_1 = +1)$ \newline
+  $P(y^\prime \neq y) = P(y^\prime = 1,y=-1,x_1 = -1) + P(y^\prime =-1,y=+1,x_1 = -1)$ \newline
+	$ + P(y^\prime = +1,y=-1, x_1 = +1) + P(y^\prime = -1, x_1 = +1)P(y=+1, x_1 = +1)$ \newline
+  $P(y^\prime \neq y) = 0.08 + 0 + 0.02 + 0 = 0.1 $
 
-	From the above prediction table, we have(considering the inputs are uniformly distributed):
-	$P(y^\prime=1,x_1=-1) = P(y^=1|x_1=-1)P(x_1=-1) = \dfrac{1}{2}$
-	$P(y^\prime=1,x_1=1) = P(y^=1|x_1=1)P(x_1=1) = \dfrac{1}{2}$
-	$P(y^\prime=-1,x_1=-1) = P(y^=-1|x_1=-1)P(x_1=-1) = 0$
-	$P(y^\prime=-1,x_1=1) = P(y^=-1|x_1=1)P(x_1=1) = 0$
-
-	Plugging these values into the main equation for $P(y^\prime \neq y)$, we get,
-	\[P(y^\prime \neq y) = \dfrac{1}{2}\times 0.08 + 0 + \dfrac{1}{2}\times 0.09 + 0 = 0.085\]
 
  \part{2.a} Given a binary classification problem with two features , $x_1,x_2$, both of which can take discrete values \{-1,1\}. Additionaly, the feature $x_2$, is exactly identical to first feature $x_1$. \newline
 	Since, $x_1$ and $x_2$ are identical/same feature, hence:
@@ -228,20 +223,16 @@
 	  1 & 1 & 0.004 & 0.729 & +1 \\
   \end{longtable}
 
-  \part{2.c} To find the error in prediction, we need to find $P(y^\prime \neq y)$. Thus:
+  \part{2.c} To find the error in prediction, we need to find $P*y^\prime \neq y)$. Thus,
 	\[P(y^\prime \neq y) = P(y^\prime \neq y, x_1 =-1 , x_2 =-1 ) + P(y^\prime \neq y, x_1 =-1 , x_2 =1 ) + P(y^\prime \neq y, x_1 =1 , x_2 =-1 ) + P(y^\prime \neq y, x_1 =1 , x_2 =1 )\]
-	Now, we consider uniform distribution of the inputs since we do not have any apriori information about the input distribution.
-	\[P(y^\prime = -1, x_1 = -1, x_2 = -1) = P(y^\prime = -1|x_1=-1,x_2=-1)P(x_1=-1,x_2=-1) = \dfrac{1}{4}\]
-	\[P(y^\prime = 1, x_1 = -1, x_2 = -1) = P(y^\prime = 1|x_1=-1,x_2=-1)P(x_1=-1,x_2=-1) = 0\]
-	\[P(y^\prime = -1, x_1 = -1, x_2 = 1) = P(y^\prime = -1|x_1=-1,x_2=1)P(x_1=-1,x_2=1) = 0\]
-	\[P(y^\prime = 1, x_1 = -1, x_2 = 1) = P(y^\prime = 1|x_1=-1,x_2=1)P(x_1=-1,x_2=1) = \dfrac{1}{4}\]
-	\[P(y^\prime = -1, x_1 = 1, x_2 = -1) = P(y^\prime = -1|x_1=1,x_2=-1)P(x_1=1,x_2=-1) = 0\]
-	\[P(y^\prime = 1, x_1 = 1, x_2 = -1) = P(y^\prime = 1|x_1=1,x_2=-1)P(x_1=1,x_2=-1) = \dfrac{1}{4}\]
-	\[P(y^\prime = -1, x_1 = 1, x_2 = 1) = P(y^\prime = -1|x_1=1,x_2=1)P(x_1=1,x_2=1) = 0\]
-	\[P(y^\prime = 1, x_1 = 1, x_2 = 1) = P(y^\prime = 1|x_1=1,x_2=1)P(x_1=1,x_2=1) = \dfrac{1}{4}\]
+	$P(y^\prime \neq y,x_1=-1,x_2=-1) = P(y^\prime = 1,y=-1,x_1=-1,x_2=-1) + P(y^\prime =-1,y=+1,x_1=-1,x_2=-1) = 0 + 0.009 = 0.009$ \newline
+	$P(y^\prime \neq y,x_1=-1,x_2=+1) = P(y^\prime = 1,y=-1,x_1=-1,x_2=+1) + P(y^\prime =-1,y=+1,x_1=-1,x_2=+1) = 0.016 + 0 = 0.016 $ \newline
+	$P(y^\prime \neq y,x_1=+1,x_2=-1) = P(y^\prime = 1,y=-1,x_1=+1,x_2=-1) + P(y^\prime =-1,y=+1,x_1=+1,x_2=-1) = 0.016 + 0 = 0.016$ \newline
+	$P(y^\prime \neq y,x_1=+1,x_2=+1) = P(y^\prime = 1,y=-1,x_1=+1,x_2=+1) + P(y^\prime =-1,y=+1,x_1=+1,x_2=+1) = 0.004$ \newline
 
-	Plugginf these values back to the equation, we get: 
-	\[P(y^\prime \neq y) = \dfrac{1}{4}\times 0.009 + \dfrac{1}{4}\times 0.016 + \dfrac{1}{4}\times 0.016 + \dfrac{1}{4}\times 0.729 = 0.1925\]
+	Therefore,
+	\[P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045\]
+
 
 	\part{2.d} Since Naive Bayes(NB) considers the features to be conditionally independent, hence if there exists features duplicated or strongly correlated, NB will treat them independently and give both of them strong weights such that they have double influence. On the other hand, Logistic-Regression(LR) does not have any conditional independence requirement and hence it performs better in cases where features might be duplicated or strongly correlated, since its minimization algorithm will tend to compensate for the correlation of features.
 
