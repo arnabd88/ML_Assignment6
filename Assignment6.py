@@ -16,7 +16,8 @@ foldValue = 0
 
 lr0 = 0.05
 lrlist = [10,5,0.1,0.01,0.05]
-SigmaSqList = [ 100,64,10,1,0.1,0.001]
+#SigmaSqList = [ 10000, 1000, 100,64,10,1,0.1,0.001]
+SigmaSqList = [ 0.0001, 0.01, 16, 100, 169, 1000, 10000]
 #SigmaSqList = [10,100]
 epochList = [4,5,6]
 
@@ -48,9 +49,9 @@ def Run_Q1():
 	
 	[XData, YData, FSize] = func.parseInfo(trainFileHandle)
 	print "YData: ", len(YData), len(XData), FSize
-	sigmaSq = 0.01
-	lr = 0.01
-	[WVec, LearningMistake,lr, neglogdata] = func.LogReg(XData, YData, FSize, sigmaSq, lr, 60,1)
+	sigmaSq = 169
+	lr = 0.05
+	[WVec, LearningMistake,lr, neglogdata] = func.LogReg(XData, YData, FSize, sigmaSq, lr, 100,1)
 	#[WVec, LearningMistake,lr] = func.LogReg(XData, YData, FSize, sigmaSq, lr, 20,0)
 	FinalTrainAcc = 100*float(len(XData) - LearningMistake)/len(XData)
 	print "Final Training Accuracy = ", FinalTrainAcc," %"
@@ -64,7 +65,7 @@ def Run_Q1():
 	##------- Negative log-likelihood Plot ---------------
 	xplot = [neglogdata[i][0] for i in range(0,len(neglogdata))]
 	yplot = [neglogdata[i][1] for i in range(0,len(neglogdata))]
-	plt.plot(xplot,yplot)
+	plt.plot(xplot,yplot,'r*')
 	plt.show()
 		
 
@@ -107,7 +108,7 @@ def Run_kvalidate():
 			print "HyperParameter INFO:: %15s" % "Best SigmaSq", " = %6s" % bestSigmaSq, ": %20s" %  "BestLearningRate", " = %6s" % bestlr, "\n\n"
 
 	print "\n\n******************************************************"
-	print "HyperParameter Info:: Best Found SigmaSquare = %8s" % bestSigmaSq, ": Best Initial Learning Rate = %" % bestlr
+	print "HyperParameter Info:: Best Found SigmaSquare = %8s" % bestSigmaSq, ": Best Initial Learning Rate = %8s" % bestlr
 	print "******************************************************\n\n"
 
 	##----------- Cross Validation Report ------------------------
@@ -138,7 +139,7 @@ def Run_kvalidate():
 	print "###########################################"
 	xplot = [neglogdata[i][0] for i in range(0,len(neglogdata))]
 	yplot = [neglogdata[i][1] for i in range(0,len(neglogdata))]
-	plt.plot(xplot,yplot,'bs')
+	plt.plot(xplot,yplot)
 	plt.ylabel('Negative Log Likelihood')
 	plt.xlabel('Epochs')
 	plt.show()
