@@ -67,7 +67,7 @@
 
   Now for a specific n, $n \geq 2 $, the probability of exactly two heads = $\binom{n}{2} P(H)^2P(T)^{n-2}$ = $\binom{n}{2}\bigg (\dfrac{1}{2} \bigg )^2 \bigg ( \dfrac{1}{2} \bigg)^{n-2} = \binom{n}{2}\bigg ( \dfrac{1}{2} \bigg)^n$
 
-  Also, since the we are given an unbiased fair dice, hence the probabilitities of getting a value of n between 1 to 6 will be equally probable, Hence, \newline
+  Also, since the we are given an unbiased fair dice, hence the probabilitities of getting a value of n between 1 to 6 will be equally probable, Hence, 
   \[ P(n=2) = P(n=3) = P(n=4) = P(n=5) = P(n=6) = \dfrac{1}{6} \]
   Using this formulation, in the expression for finding the probability of exactly two heads , we get:
   \[P(H=2) = \binom{2}{2}\bigg ( \dfrac{1}{2} \bigg )^2\dfrac{1}{6} + \binom{3}{2}\bigg ( \dfrac{1}{2} \bigg )^3\dfrac{1}{6} + \binom{4}{2}\bigg ( \dfrac{1}{2} \bigg )^4\dfrac{1}{6} + \binom{5}{2}\bigg ( \dfrac{1}{2} \bigg )^5\dfrac{1}{6} + \binom{6}{2}\bigg ( \dfrac{1}{2} \bigg )^6\dfrac{1}{6}\]
@@ -90,8 +90,7 @@
   \textbf{Proof:} Assuming $A_1$ and $A_2$ being independent discrete random variables, although the same holds for the continuous case.
   Then the expectation of $A_1$ is written as:
   \[E[A_1] = \sum_{a_1} a_1P(A_1 = a_1)\]
-  where $a_1$ represents the values that $A_1$ can take and $P(a_2)$ represents their probabilities. \newline
-  Similarly,
+  where $a_1$ represents the values that $A_1$ can take and $P(a_2)$ represents their probabilities. Similarly,
   \[E[A_2] = \sum_{a_2} a_2P(A_2 = a_2) \]
 
   Then, we can write:
@@ -121,8 +120,9 @@
   \[var[A_1 + A_2] = E[(A_1 + A_2)^2] - (E[A_1 + A_2])^2 = E[(A_1 + A_2)^2] - (E[A_1] + E[A_2])^2\]
   \[var[A_1 + A_2] = E[A_1^2] + E[A_2^2] +2E[A_1A_2] - (E[A_1])^2 - (E[A_2])^2 - 2E[A_1]E[A_2]\]
   \[var[A_1 + A_2] = (E[A_1^2] - (E[A_1])^2) + (E[A_2^2] - (E[A_2])^2) + 2E[A_1A_2] - 2E[A_1]E[A_2]\]
+  \[var[A_1 + A_2] = var[A_1] + var[A_2] + 2E[A_1A_2] - 2E[A_1]E[A_2] \]
   \begin{equation}
-  var[A_1 + A_2] = var[A_1] + var[A_2] + 2E[A_1A_2] - 2E[A_1]E[A_2] = var[A_1] + var[A_2] + 2\sum_{a_1}\sum{a_2}a_1a_2P(A_1 = a_1,A_2 = a_2) - 2E[A_1]E[A_2]
+  var[A_1 + A_2] = var[A_1] + var[A_2] + 2\sum_{a_1}\sum{a_2}a_1a_2P(A_1 = a_1,A_2 = a_2) - 2E[A_1]E[A_2]
 	  \label{eq:varsum}
   \end{equation}
 
@@ -189,7 +189,7 @@
 
 	However, in this case, since $x_1$ and $x_2$, are the same feature, hence the probability of $x_1$, given $x_2$ and $y$, will be same as probability of $x_2$ given y, multiplied with the gating function $P(x_1 | x_2)$ which means $P(x_1 | x_2,y) = P(x_1 | x_2)$ such that if $x_1=x_2$, it is one, and if $x_1 \neq x_2$, it is zero. Thus, we have,
 	\[P(x_1,x_2 | y) = P(x_1 | x_2,y) P(x_2 | y) = P(x_1 | x_2) P(x_2|y)\]
-	This differs from the requirement of conditional independence in $\eqref{eq:condInd}$. Hence, $x_1$ and $x_2$ are \textbf {not} conditionally independent, fiven y. 
+	This differs from the requirement of conditional independence in $\eqref{eq:condInd}$. Hence, $x_1$ and $x_2$ are \textbf {not} conditionally independent, given y. 
 
  \part{2.b}
 	Given that $\hat{P}(x_1 | y)$, $\hat{P}(x_2 | y)$ and $\hat{P}(y)$ represent the learned parameters of a Naive Bayes(NB) classifier on infinite data set, so the values of these probabilities will be same as in the previous question. Hence,evaluating the probabilities in the table: \newline
@@ -204,11 +204,10 @@
 	$7. \hat{P}(x_1 = 1,x_2 =-1 ,y = 1 )$ = $\hat{P}(x_1=1 | y=1 )\hat{P}(x_2=-1 | y= 1)\hat{P}(y= 1) = 0.9\times 0.1 \times 0.9 = 0.081$ \newline
 	$8. \hat{P}(x_1 =1 ,x_2 =1 ,y = 1 )$ = $\hat{P}(x_1=1 | y=1 )\hat{P}(x_2= 1| y= 1)\hat{P}(y= 1) = 0.9 \times 0.9 \times 0.9 = 0.729$ \newline
 
-	Hence, the predictions will be: \newline
-  \[y^\prime\bigg |_{x_1=-1,x_2=-1} = argmax_y\hat{P}(x_1=-1,x_2=-1,y) = -1\]
-  \[y^\prime\bigg |_{x_1=-1,x_2=1} = argmax_y\hat{P}(x_1=-1,x_2=1,y) = 1\]
-  \[y^\prime\bigg |_{x_1=1,x_2=-1} = argmax_y\hat{P}(x_1=1,x_2=-1,y) = 1\]
-  \[y^\prime\bigg |_{x_1=1,x_2=1} = argmax_y\hat{P}(x_1=1,x_2=1,y) = 1\]
+	Hence, the predictions will be like: $y^\prime\bigg |_{x_1=-1,x_2=-1} = argmax_y\hat{P}(x_1=-1,x_2=-1,y) = -1$. Similarly, filling up the table:
+ % \[y^\prime\bigg |_{x_1=-1,x_2=1} = argmax_y\hat{P}(x_1=-1,x_2=1,y) = 1\]
+ % \[y^\prime\bigg |_{x_1=1,x_2=-1} = argmax_y\hat{P}(x_1=1,x_2=-1,y) = 1\]
+ % \[y^\prime\bigg |_{x_1=1,x_2=1} = argmax_y\hat{P}(x_1=1,x_2=1,y) = 1\]
   Thus the table will be:
 \begin{longtable}{c|c|c|c|c}
 	\caption{Probability Table-1: Input $x_1$, $x_2$, $\hat{P}(x_1,x_2,y=-1)$,$\hat{P}(x_1,x_2,y=1)$ ,Prediction: $y^\prime = arg max_y \hat{P}(x_1,x_2,y)$} \\
@@ -255,7 +254,7 @@
 	hence, we get the decision boundary as:
 	\[ b + \sum_{j=0}^d w_jx_j \geq 0\]
 
-	Hence, our classifier is a linear classifier. \newline
+	Hence, our classifier is a linear classifier. 
 
 	\question{4}{Experiment}
 	Given minimization problem: $\min_{\mathbf{w}}\{ \sum_{i=1}^m \log(1 + \exp(-y_i\mathbf{w}^T\mathbf{x_i})) + \dfrac{1}{\sigma^2}\mathbf{w^Tw} \}$
@@ -290,6 +289,77 @@
 	\hspace*{1.5cm}		t = t+1 \newline
 	\hspace*{0.5cm} return $\mathbf{w}$
 
-
+   \part{4} The experiments were run on a cross-validate $sigmaSquare$ and the $learningRate$. The selected list of cross-validation parameters were: \newline
+   SigmaSquare  = $[0.0001, 0.01, 16, 100 , 169, 1000, 10000]$ \newline
+   Learningrate = $[10, 5, 0.1, 0.01, 0.05]$ \newline
+   After 5-fold cross validation, the chosen sigmaSquare and Learning Rates are:
+   \textbf {Best-SigmaSquare = } 1000, \textbf {Best Initial Learning Rate = } 0.1. \newline
+   For cross validation, 20 epochs were used, while for the final training and evaluating the objective function after every epoch, 100 epochs , were used. \newline
+   \textbf {Final Training Accuracy = 84.268\%}, and, \textbf {Final Test Accuracy = 84.54\%} \newline
+   Below table reports the accuracies seen during cross validation
+ \begin{longtable}{c|c|c|c}
+  \caption{5-fold cross validation on UCI data set} \\
+  %\centering
+  %\begin{tabular}{c c  c c }
+  \hline\hline
+	  SigmaSquare($\sigma^2$) & $LearningRate$ & Avg.Training Accuracy($\%$) & Avg.Test Accuracy($\%$) \\[1ex]
+  \hline
+ 0.0001 &    10 & 75.5416 & 75.5226 \\
+   0.01 &    10 & 75.5416 & 75.5226 \\
+     16 &    10 & 79.5946 & 79.5475 \\
+    100 &    10 & 83.6009 & 82.9485 \\
+    169 &    10 & 83.9399 & 83.5725 \\
+   1000 &    10 & 84.7466 & 83.9157 \\
+  10000 &    10 & 83.7295 & 82.6053 \\
+ 0.0001 &     5 & 75.5416 & 75.5226 \\
+   0.01 &     5 & 75.5416 & 75.5226 \\
+     16 &     5 & 79.5946 & 79.5787 \\
+    100 &     5 & 83.6866 & 82.9797 \\
+    169 &     5 & 83.9360 & 83.6661 \\
+   1000 &     5 & 84.6960 & 83.9157 \\
+  10000 &     5 & 82.2330 & 81.7784 \\
+ 0.0001 &   0.1 & 75.5416 & 75.5226 \\
+   0.01 &   0.1 & 75.5416 & 75.5226 \\
+     16 &   0.1 & 79.5284 & 79.4539 \\
+    100 &   0.1 & 83.5736 & 83.0733 \\
+    169 &   0.1 & 83.9088 & 83.3853 \\
+  \textbf{1000} &   \textbf{0.1} & \textbf{84.3413} & \textbf{84.3369} \\
+  10000 &   0.1 & 84.2283 & 83.6817 \\
+ 0.0001 &  0.01 & 75.5416 & 75.5226 \\
+   0.01 &  0.01 & 75.5416 & 75.5226 \\
+     16 &  0.01 & 79.5908 & 79.5787 \\
+    100 &  0.01 & 83.5268 & 83.2449 \\
+    169 &  0.01 & 83.9360 & 83.4945 \\
+   1000 &  0.01 & 84.8597 & 84.1497 \\
+  10000 &  0.01 & 85.0311 & 83.9625 \\
+ 0.0001 &  0.05 & 75.5416 & 75.5226 \\
+   0.01 &  0.05 & 75.5416 & 75.5226 \\
+     16 &  0.05 & 79.5752 & 79.5787 \\
+    100 &  0.05 & 83.5658 & 83.0265 \\
+    169 &  0.05 & 83.9594 & 83.5569 \\
+   1000 &  0.05 & 84.6726 & 83.8533 \\
+  10000 &  0.05 & 84.5869 & 83.5725 \\ [1ex]
+  %\end{tabular}
+  %\label{table:nonlin}
+  \end{longtable}
+  
+  The below Figure(1) shows the plot of the objective function, and the next figure(2), shows the same objective function without connecting the plots. As figure(2) suggests, the objective function rapidly reduced within the initial epochs, however, at frequent intervals there comes to be some outliers. In our experiment, we also print the l2-norm of the weight vector after learning each epoch(Look at \textbf{finalLog} in the submission tar. The l2-norm suggests steady decrease in the weight vector, intially starting from \textbf{4.08} and finally steadying itself at \textbf{3.67}. We also experimented on the gradient descent over this data-set,figure(3) shows the plot of objective function for gradient descent that steadily decreases as expected but much slowly than compared to SGD. The gradient descent also shows few outliers which indicates that the objective function with this dataset might be weakly convex which may justify so many outliers in the SGD plot.  \newline
+  \begin{figure}[H]
+   \centering
+  \includegraphics[width=10cm, height=8cm]{finalConnectedGraph}
+  \caption{Objective function with straight line interpolation between points}
+  \end{figure}
+  \begin{figure}[H]
+   \centering
+  \includegraphics[width=10cm, height=8cm]{finalDotGraph}
+  \caption{Objective function with straight line interpolation between points}
+  \end{figure}
+  \begin{figure}[H]
+   \centering
+  \includegraphics[width=10cm, height=8cm]{gd60}
+  \caption{Objective function for gradient descent}
+  \end{figure}
+  
+ Thats all for now!! Check out the code!! 
 
 \end{document}
