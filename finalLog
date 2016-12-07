@@ -1,0 +1,247 @@
+
+################################################################
+        Starting 5 Fold Cross Validation                        
+################################################################
+
+HyperParameter INFO::     SigmaSquare  = 0.0001 :         LearningRate  =     10 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  = 0.0001 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =   0.01 :         LearningRate  =     10 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  = 0.0001 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =     16 :         LearningRate  =     10 :   TrainAcc  = 79.5946999221 :    TestAcc  = 79.5475819033 
+HyperParameter INFO::    Best SigmaSq  =     16 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =    100 :         LearningRate  =     10 :   TrainAcc  = 83.6009353079 :    TestAcc  = 82.9485179407 
+HyperParameter INFO::    Best SigmaSq  =    100 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =    169 :         LearningRate  =     10 :   TrainAcc  = 83.9399844115 :    TestAcc  = 83.5725429017 
+HyperParameter INFO::    Best SigmaSq  =    169 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =   1000 :         LearningRate  =     10 :   TrainAcc  = 84.7466874513 :    TestAcc  = 83.9157566303 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =  10000 :         LearningRate  =     10 :   TrainAcc  = 83.7295401403 :    TestAcc  = 82.6053042122 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  = 0.0001 :         LearningRate  =      5 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =   0.01 :         LearningRate  =      5 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =     16 :         LearningRate  =      5 :   TrainAcc  = 79.5946999221 :    TestAcc  = 79.5787831513 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =    100 :         LearningRate  =      5 :   TrainAcc  = 83.6866718628 :    TestAcc  = 82.9797191888 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =    169 :         LearningRate  =      5 :   TrainAcc  = 83.9360872954 :    TestAcc  = 83.6661466459 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =     10 
+
+
+HyperParameter INFO::     SigmaSquare  =   1000 :         LearningRate  =      5 :   TrainAcc  = 84.6960249415 :    TestAcc  = 83.9157566303 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =  10000 :         LearningRate  =      5 :   TrainAcc  = 82.2330475448 :    TestAcc  = 81.7784711388 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  = 0.0001 :         LearningRate  =    0.1 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =   0.01 :         LearningRate  =    0.1 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =     16 :         LearningRate  =    0.1 :   TrainAcc  = 79.5284489478 :    TestAcc  = 79.4539781591 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =    100 :         LearningRate  =    0.1 :   TrainAcc  = 83.5736554949 :    TestAcc  = 83.0733229329 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =    169 :         LearningRate  =    0.1 :   TrainAcc  = 83.9088074825 :    TestAcc  = 83.3853354134 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =      5 
+
+
+HyperParameter INFO::     SigmaSquare  =   1000 :         LearningRate  =    0.1 :   TrainAcc  = 84.3413873733 :    TestAcc  = 84.3369734789 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =  10000 :         LearningRate  =    0.1 :   TrainAcc  = 84.2283710055 :    TestAcc  = 83.6817472699 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  = 0.0001 :         LearningRate  =   0.01 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =   0.01 :         LearningRate  =   0.01 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =     16 :         LearningRate  =   0.01 :   TrainAcc  = 79.5908028059 :    TestAcc  = 79.5787831513 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =    100 :         LearningRate  =   0.01 :   TrainAcc  = 83.5268901013 :    TestAcc  = 83.2449297972 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =    169 :         LearningRate  =   0.01 :   TrainAcc  = 83.9360872954 :    TestAcc  = 83.4945397816 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =   1000 :         LearningRate  =   0.01 :   TrainAcc  = 84.8597038192 :    TestAcc  = 84.1497659906 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =  10000 :         LearningRate  =   0.01 :   TrainAcc  = 85.0311769291 :    TestAcc  = 83.9625585023 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  = 0.0001 :         LearningRate  =   0.05 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =   0.01 :         LearningRate  =   0.05 :   TrainAcc  = 75.5416991426 :    TestAcc  = 75.5226209048 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =     16 :         LearningRate  =   0.05 :   TrainAcc  = 79.5752143414 :    TestAcc  = 79.5787831513 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =    100 :         LearningRate  =   0.05 :   TrainAcc  = 83.5658612627 :    TestAcc  = 83.0265210608 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =    169 :         LearningRate  =   0.05 :   TrainAcc  = 83.9594699922 :    TestAcc  = 83.5569422777 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =   1000 :         LearningRate  =   0.05 :   TrainAcc  = 84.6726422447 :    TestAcc  = 83.8533541342 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+HyperParameter INFO::     SigmaSquare  =  10000 :         LearningRate  =   0.05 :   TrainAcc  = 84.5869056898 :    TestAcc  = 83.5725429017 
+HyperParameter INFO::    Best SigmaSq  =   1000 :     BestLearningRate  =    0.1 
+
+
+
+
+******************************************************
+HyperParameter Info:: Best Found SigmaSquare =     1000 : Best Initial Learning Rate =      0.1
+******************************************************
+
+
+Starting Final Training (On 80 Epochs)...................
+Epoch =  0 , ObjectiveFunValue =  16252.4296653 L2-Norm-Weight =  4.06848626461
+Epoch =  1 , ObjectiveFunValue =  1944.6390141 L2-Norm-Weight =  3.79177099913
+Epoch =  2 , ObjectiveFunValue =  12635.5644273 L2-Norm-Weight =  3.89629776133
+Epoch =  3 , ObjectiveFunValue =  2060.74661555 L2-Norm-Weight =  3.70203344795
+Epoch =  4 , ObjectiveFunValue =  12984.5861333 L2-Norm-Weight =  3.77054266378
+Epoch =  5 , ObjectiveFunValue =  2815.98659548 L2-Norm-Weight =  3.70742969253
+Epoch =  6 , ObjectiveFunValue =  2660.15012969 L2-Norm-Weight =  3.71416445626
+Epoch =  7 , ObjectiveFunValue =  14551.2025952 L2-Norm-Weight =  3.76661372117
+Epoch =  8 , ObjectiveFunValue =  13974.4428136 L2-Norm-Weight =  3.71718120607
+Epoch =  9 , ObjectiveFunValue =  2441.03368464 L2-Norm-Weight =  3.70155433302
+Epoch =  10 , ObjectiveFunValue =  2854.59215754 L2-Norm-Weight =  3.65905121729
+Epoch =  11 , ObjectiveFunValue =  14354.8540033 L2-Norm-Weight =  3.68961978483
+Epoch =  12 , ObjectiveFunValue =  2716.27689289 L2-Norm-Weight =  3.70136849028
+Epoch =  13 , ObjectiveFunValue =  2527.81578765 L2-Norm-Weight =  3.69854247765
+Epoch =  14 , ObjectiveFunValue =  2465.01336589 L2-Norm-Weight =  3.70589912711
+Epoch =  15 , ObjectiveFunValue =  2483.93959182 L2-Norm-Weight =  3.68871751165
+Epoch =  16 , ObjectiveFunValue =  2688.35364191 L2-Norm-Weight =  3.67427817972
+Epoch =  17 , ObjectiveFunValue =  2425.52945595 L2-Norm-Weight =  3.70143818972
+Epoch =  18 , ObjectiveFunValue =  15213.7799889 L2-Norm-Weight =  3.68924796376
+Epoch =  19 , ObjectiveFunValue =  2612.64204921 L2-Norm-Weight =  3.67266017629
+Epoch =  20 , ObjectiveFunValue =  2504.15425026 L2-Norm-Weight =  3.68403659527
+Epoch =  21 , ObjectiveFunValue =  2589.62295972 L2-Norm-Weight =  3.70126164477
+Epoch =  22 , ObjectiveFunValue =  2462.09894186 L2-Norm-Weight =  3.68910577728
+Epoch =  23 , ObjectiveFunValue =  2680.139216 L2-Norm-Weight =  3.67555582942
+Epoch =  24 , ObjectiveFunValue =  2568.83127117 L2-Norm-Weight =  3.69365709083
+Epoch =  25 , ObjectiveFunValue =  2516.79114025 L2-Norm-Weight =  3.69230113173
+Epoch =  26 , ObjectiveFunValue =  2540.06184213 L2-Norm-Weight =  3.68094715297
+Epoch =  27 , ObjectiveFunValue =  15210.2959563 L2-Norm-Weight =  3.67581876267
+Epoch =  28 , ObjectiveFunValue =  2913.8657552 L2-Norm-Weight =  3.67158641861
+Epoch =  29 , ObjectiveFunValue =  14877.8734707 L2-Norm-Weight =  3.67136831471
+Epoch =  30 , ObjectiveFunValue =  2769.45317013 L2-Norm-Weight =  3.6727885619
+Epoch =  31 , ObjectiveFunValue =  2400.51749892 L2-Norm-Weight =  3.67546346725
+Epoch =  32 , ObjectiveFunValue =  2676.55886424 L2-Norm-Weight =  3.68854575577
+Epoch =  33 , ObjectiveFunValue =  15329.2684843 L2-Norm-Weight =  3.68803516165
+Epoch =  34 , ObjectiveFunValue =  2776.14891327 L2-Norm-Weight =  3.6886912099
+Epoch =  35 , ObjectiveFunValue =  2519.69704027 L2-Norm-Weight =  3.68404822426
+Epoch =  36 , ObjectiveFunValue =  15110.246554 L2-Norm-Weight =  3.6852578058
+Epoch =  37 , ObjectiveFunValue =  2847.71158998 L2-Norm-Weight =  3.67891384609
+Epoch =  38 , ObjectiveFunValue =  2503.72488835 L2-Norm-Weight =  3.69010909968
+Epoch =  39 , ObjectiveFunValue =  2433.35485165 L2-Norm-Weight =  3.67953942629
+Epoch =  40 , ObjectiveFunValue =  2909.92593592 L2-Norm-Weight =  3.67644157834
+Epoch =  41 , ObjectiveFunValue =  2462.99112135 L2-Norm-Weight =  3.67659413885
+Epoch =  42 , ObjectiveFunValue =  2506.28365823 L2-Norm-Weight =  3.67646101704
+Epoch =  43 , ObjectiveFunValue =  2786.18648194 L2-Norm-Weight =  3.6634164878
+Epoch =  44 , ObjectiveFunValue =  2639.31459061 L2-Norm-Weight =  3.67574461783
+Epoch =  45 , ObjectiveFunValue =  14939.8178403 L2-Norm-Weight =  3.66925929159
+Epoch =  46 , ObjectiveFunValue =  2880.40005111 L2-Norm-Weight =  3.66874686851
+Epoch =  47 , ObjectiveFunValue =  2328.34115186 L2-Norm-Weight =  3.68471287634
+Epoch =  48 , ObjectiveFunValue =  2831.44483465 L2-Norm-Weight =  3.66925644562
+Epoch =  49 , ObjectiveFunValue =  2572.82421509 L2-Norm-Weight =  3.67783137494
+Epoch =  50 , ObjectiveFunValue =  15761.3165956 L2-Norm-Weight =  3.68352330117
+Epoch =  51 , ObjectiveFunValue =  2467.66895663 L2-Norm-Weight =  3.68415700429
+Epoch =  52 , ObjectiveFunValue =  2880.57499979 L2-Norm-Weight =  3.67504341502
+Epoch =  53 , ObjectiveFunValue =  2749.10617123 L2-Norm-Weight =  3.67111578515
+Epoch =  54 , ObjectiveFunValue =  2407.98091638 L2-Norm-Weight =  3.67698732738
+Epoch =  55 , ObjectiveFunValue =  2463.77454025 L2-Norm-Weight =  3.67511867128
+Epoch =  56 , ObjectiveFunValue =  2564.82247478 L2-Norm-Weight =  3.67749976995
+Epoch =  57 , ObjectiveFunValue =  15196.4838115 L2-Norm-Weight =  3.67089316627
+Epoch =  58 , ObjectiveFunValue =  15260.4292802 L2-Norm-Weight =  3.6677658002
+Epoch =  59 , ObjectiveFunValue =  14497.868542 L2-Norm-Weight =  3.66643230784
+Epoch =  60 , ObjectiveFunValue =  15525.5939363 L2-Norm-Weight =  3.67163491252
+Epoch =  61 , ObjectiveFunValue =  2469.47730802 L2-Norm-Weight =  3.67455839602
+Epoch =  62 , ObjectiveFunValue =  2350.09178058 L2-Norm-Weight =  3.67558080885
+Epoch =  63 , ObjectiveFunValue =  2820.82622288 L2-Norm-Weight =  3.67086401189
+Epoch =  64 , ObjectiveFunValue =  2813.74972748 L2-Norm-Weight =  3.67384268445
+Epoch =  65 , ObjectiveFunValue =  2641.05528456 L2-Norm-Weight =  3.6741966918
+Epoch =  66 , ObjectiveFunValue =  2532.98688344 L2-Norm-Weight =  3.67383961605
+Epoch =  67 , ObjectiveFunValue =  2628.22606688 L2-Norm-Weight =  3.6732759934
+Epoch =  68 , ObjectiveFunValue =  2778.47097285 L2-Norm-Weight =  3.67336137284
+Epoch =  69 , ObjectiveFunValue =  2796.46710131 L2-Norm-Weight =  3.67412138769
+Epoch =  70 , ObjectiveFunValue =  2491.79761459 L2-Norm-Weight =  3.67568951627
+Epoch =  71 , ObjectiveFunValue =  15358.7307854 L2-Norm-Weight =  3.66814698039
+Epoch =  72 , ObjectiveFunValue =  2936.09662201 L2-Norm-Weight =  3.67066520265
+Epoch =  73 , ObjectiveFunValue =  15581.3099873 L2-Norm-Weight =  3.66895872182
+Epoch =  74 , ObjectiveFunValue =  15040.2897044 L2-Norm-Weight =  3.66638903168
+Epoch =  75 , ObjectiveFunValue =  2758.5648688 L2-Norm-Weight =  3.66807443882
+Epoch =  76 , ObjectiveFunValue =  2710.41312209 L2-Norm-Weight =  3.66986708341
+Epoch =  77 , ObjectiveFunValue =  15671.0427662 L2-Norm-Weight =  3.67262993847
+Epoch =  78 , ObjectiveFunValue =  15363.8963344 L2-Norm-Weight =  3.66855105095
+Epoch =  79 , ObjectiveFunValue =  2376.49503386 L2-Norm-Weight =  3.67150292461
+Training Completed .......................
+Final Training Accuracy = 84.2687870284 %
+
+
+Initiating Final Testing .................
+Final Testing Completed.................
+Final Test Accuracy = 84.5488966229 %
+
+
+
+
+###########################################
+Plotting the Negative Log Likelihood
+###########################################

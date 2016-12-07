@@ -49,8 +49,8 @@ def Run_Q1():
 	
 	[XData, YData, FSize] = func.parseInfo(trainFileHandle)
 	print "YData: ", len(YData), len(XData), FSize
-	sigmaSq = 169
-	lr = 0.05
+	sigmaSq = 1000
+	lr = 0.1
 	[WVec, LearningMistake,lr, neglogdata] = func.LogReg(XData, YData, FSize, sigmaSq, lr, 100,1)
 	#[WVec, LearningMistake,lr] = func.LogReg(XData, YData, FSize, sigmaSq, lr, 20,0)
 	FinalTrainAcc = 100*float(len(XData) - LearningMistake)/len(XData)
@@ -65,7 +65,7 @@ def Run_Q1():
 	##------- Negative log-likelihood Plot ---------------
 	xplot = [neglogdata[i][0] for i in range(0,len(neglogdata))]
 	yplot = [neglogdata[i][1] for i in range(0,len(neglogdata))]
-	plt.plot(xplot,yplot,'r*')
+	plt.plot(xplot,yplot,'bs')
 	plt.show()
 		
 
