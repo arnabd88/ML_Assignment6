@@ -66,6 +66,8 @@ def Run_Q1():
 	xplot = [neglogdata[i][0] for i in range(0,len(neglogdata))]
 	yplot = [neglogdata[i][1] for i in range(0,len(neglogdata))]
 	plt.plot(xplot,yplot,'bs')
+	plt.ylabel('Negative Log Likelihood')
+	plt.xlabel('Epochs')
 	plt.show()
 		
 
